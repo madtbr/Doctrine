@@ -37,14 +37,6 @@ class Endereco
 
 
     /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
      * @param mixed $id
      * @return Endereco
      */

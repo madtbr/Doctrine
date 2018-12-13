@@ -33,18 +33,32 @@ class Cliente
      * @ORM\Column(type="string", length=130)
      */
     private $email;
-/*inversed by é o id de endereco */
+    /*inversed by é o id de endereco */
+
     /**
      * @var object
-     * @ORM\ManyToOne(targetEntity="App\Entity\Endereco", inversedBy="id")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Endereco", inversedBy="id", cascade={"persist"})
      *
      */
     private $endereco;
 
-    public function getId(): ?int
+    /**
+     * @var object
+     *
+     * @ORM\ManyToMany(targetEntity="App\Entity\Animal", inversedBy="cliente")
+     * @ORM\JoinTable(name="animal_cliente")
+     *
+     */
+    private $animal;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
     {
         return $this->id;
     }
+
 
     /**
      * @return string
@@ -109,13 +123,33 @@ class Cliente
     }
 
     /**
-     * @param object $endereco
+     * @param Endereco $endereco
      * @return Cliente
      */
-    public function setEndereco($endereco)
+    public function setEndereco(Endereco $endereco)
     {
         $this->endereco = $endereco;
         return $this;
     }
+
+    /**
+     * @return object
+     */
+    public function getAnimal()
+    {
+        return $this->animal;
+    }
+
+    /**
+     * @param object $animal
+     * @return Cliente
+     */
+    public function setAnimal($animal)
+    {
+        $this->animal = $animal;
+        return $this;
+    }
+
+
 
 }

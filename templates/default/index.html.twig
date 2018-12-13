@@ -10,14 +10,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Men<span>tor</span></a>
+                
+                <a class="navbar-brand" href="{{ path('default') }}">Home</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <!-- raças e -->
-                    <li><a href="#clientes">Clientes</a></li>
-                    <li><a href="#animais">Animais</a></li>
-                    <li><a href="#" data-target="#login" data-toggle="modal">Sign in</a></li>
+                    <li class="nav-item {% if app.request.attributes.get("_route") matches '/(.*)default(.*)/' %}active {% endif %}"><a href="{{ path('listar_clientes') }}">Clientes</a></li>
+                    <li class="nav-item {% if app.request.attributes.get("_route") matches '/(.*)animais(.*)/' %}active {% endif %}"><a href="{{ path('listar_animais') }}">Animais</a></li>
+                    <li class="nav-item {% if app.request.attributes.get("_route") matches '/(.*)login(.*)/' %}active {% endif %}"><a href="#" data-target="#login" data-toggle="modal">Sign in</a></li>
                     <li class="btn-trial"><a href="#footer">Free Trail</a></li>
                 </ul>
             </div>
@@ -104,8 +104,25 @@
             <div class="row">
                 <div class="header-section text-center">
                     <h2>Features</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem nesciunt vitae,<br> maiores, magni dolorum aliquam.</p>
-                    <hr class="bottom-line">
+                   <table class="table table-striped">
+                        {% for qts in qts_animais %}
+                    <tr><th>{{ qts.nome }}</th>
+                        <td>{{ qts.qtde }}</td>
+                    </tr>
+                    {% endfor %}
+                   </table>
+                   <hr class="bottom-line">
+                </div>
+                <div class="header-section text-center">
+                   <table class="table table-striped">
+                        {% for qts in qtde_por_raca %}
+                    <tr>
+                        <th>{{ qts.nome }}</th>
+                        <td>{{ qts.qtde }}</td>
+                    </tr>
+                    {% endfor %}
+                   </table>
+                   <hr class="bottom-line">
                 </div>
                 <div class="feature-info">
                     <div class="fea">

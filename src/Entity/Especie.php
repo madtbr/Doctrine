@@ -1,27 +1,23 @@
 <?php
-
 namespace App\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
-
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EspecieRepository")
  */
 class Especie
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
+     * @ORM\Id
+     * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
     private $id;
-
     /**
      * @var string
+     *
      * @ORM\Column(type="string", length=50)
      */
     private $nome;
-
     /**
      * @return mixed
      */
@@ -29,17 +25,6 @@ class Especie
     {
         return $this->id;
     }
-
-    /**
-     * @param mixed $id
-     * @return Especie
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-        return $this;
-    }
-
     /**
      * @return string
      */
@@ -47,7 +32,6 @@ class Especie
     {
         return $this->nome;
     }
-
     /**
      * @param string $nome
      * @return Especie
@@ -57,6 +41,4 @@ class Especie
         $this->nome = $nome;
         return $this;
     }
-
-
 }
